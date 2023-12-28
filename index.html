@@ -1,0 +1,116 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Student Results</title>
+    <style>
+        table {
+            font-family: Arial, sans-serif;
+            border-collapse: collapse;
+            width: 100%;
+        }
+
+        th, td {
+            border: 1px solid #dddddd;
+            text-align: left;
+            padding: 8px;
+        }
+
+        th {
+            background-color: #f2f2f2;
+        }
+    </style>
+</head>
+<body>
+
+<h2>Student Results</h2>
+
+<table id="resultTable">
+    <tr>
+        <th>Student ID</th>
+        <th>Full Name</th>
+        <th>Branch</th>
+        <th>From Year</th>
+        <th>To Year</th>
+        <th>Subject 01</th>
+        <th>Subject 02</th>
+        <th>Subject 03</th>
+        <th>Subject 04</th>
+        <th>Subject 05</th>
+        <th>Result</th>
+    </tr>
+</table>
+
+<script>
+    // Modify this function based on your passing criteria
+    function calculateResult(marks) {
+        var passingMarks = 200;  // Update this value based on your passing criteria
+        return marks >= passingMarks ? "Pass" : "Fail";
+    }
+
+    // Dummy data for demonstration, replace this with actual data from your database
+    var students = [
+        { student_id: 1, full_name: "John Doe", branch: "Computer Science", from_year: 2020, to_year: 2024, subject_01: 80, subject_02: 75, subject_03: 85, subject_04: 90, subject_05: 88 },
+        { student_id: 2, full_name: "Jane Smith", branch: "Computer Science", from_year: 2019, to_year: 2023, subject_01: 70, subject_02: 85, subject_03: 78, subject_04: 92, subject_05: 76 },
+        { student_id: 3, full_name: "jane z", branch: "Computer Science", from_year: 2019, to_year: 2023, subject_01: 65, subject_02: 25, subject_03: 28, subject_04: 12, subject_05: 16 },
+        { student_id: 4, full_name: "wakar zaka", branch: "Computer Science", from_year: 2019, to_year: 2023, subject_01: 40, subject_02: 45, subject_03: 48, subject_04: 42, subject_05: 46 },
+        { student_id: 5, full_name: "shane wat", branch: "Computer Science", from_year: 2019, to_year: 2023, subject_01: 50, subject_02: 55, subject_03: 58, subject_04: 52, subject_05: 56 },
+        { student_id: 6, full_name: "Janie doe", branch: "Computer Science", from_year: 2019, to_year: 2023, subject_01: 20, subject_02: 25, subject_03: 28, subject_04: 22, subject_05: 26 },
+        { student_id: 7, full_name: "rafik sayed", branch: "Computer Science", from_year: 2019, to_year: 2023, subject_01: 20, subject_02: 85, subject_03: 78, subject_04: 52, subject_05: 76 },
+        { student_id: 8, full_name: "sanket bidkar", branch: "Computer Science", from_year: 2019, to_year: 2023, subject_01: 20, subject_02: 35, subject_03: 28, subject_04: 52, subject_05: 56 },
+        { student_id: 9, full_name: "shantanu shandilkar", branch: "Computer Science", from_year: 2019, to_year: 2023, subject_01: 20, subject_02: 55, subject_03: 78, subject_04: 92, subject_05: 76 },
+        { student_id: 10, full_name: "vijay singh", branch: "Computer Science", from_year: 2019, to_year: 2023, subject_01: 70, subject_02: 85, subject_03: 78, subject_04: 92, subject_05: 76 },
+              // Add more student data as needed
+    ];
+
+    // Function to display student results in the table
+    function displayResults() {
+        var table = document.getElementById("resultTable");
+
+        // Clear existing rows
+        while (table.rows.length > 1) {
+            table.deleteRow(1);
+        }
+
+        // Populate the table with student data
+        for (var i = 0; i < students.length; i++) {
+            var student = students[i];
+            var row = table.insertRow(table.rows.length);
+            var cell1 = row.insertCell(0);
+            var cell2 = row.insertCell(1);
+            var cell3 = row.insertCell(2);
+            var cell4 = row.insertCell(3);
+            var cell5 = row.insertCell(4);
+            var cell6 = row.insertCell(5);
+            var cell7 = row.insertCell(6);
+            var cell8 = row.insertCell(7);
+            var cell9 = row.insertCell(8);
+            var cell10 = row.insertCell(9);
+            var cell11 = row.insertCell(10);
+
+            cell1.innerHTML = student.student_id;
+            cell2.innerHTML = student.full_name;
+            cell3.innerHTML = student.branch;
+            cell4.innerHTML = student.from_year;
+            cell5.innerHTML = student.to_year;
+            cell6.innerHTML = student.subject_01;
+            cell7.innerHTML = student.subject_02;
+            cell8.innerHTML = student.subject_03;
+            cell9.innerHTML = student.subject_04;
+            cell10.innerHTML = student.subject_05;
+
+            // Calculate total marks
+            var totalMarks = student.subject_01 + student.subject_02 + student.subject_03 + student.subject_04 + student.subject_05;
+            var result = calculateResult(totalMarks);
+
+            cell11.innerHTML = result;
+        }
+    }
+
+    // Call the displayResults function when the page loads
+    window.onload = displayResults;
+</script>
+
+</body>
+</html>
